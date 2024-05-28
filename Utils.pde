@@ -26,9 +26,9 @@ float cb(float x) {
   return x * x * x;
 }
 
-PVector[] fourier(float[] input) {
+Complex[] fourier(float[] input) {
   int l = input.length;
-  PVector[] output = new PVector[l];
+  Complex[] output = new Complex[l];
   
   for (int k = 0; k < l; k++) {
     float re = 0;
@@ -40,13 +40,13 @@ PVector[] fourier(float[] input) {
       im -= input[n] * sin(angle);
     }
     
-    output[k] = new PVector(re, im);
+    output[k] = new Complex(re, im);
   }
   
   return output;
 }
 
-float[] invertedFourier(PVector[] input) {
+float[] invertedFourier(Complex[] input) {
   int l = input.length;
   float[] output = new float[l];
   
@@ -55,7 +55,7 @@ float[] invertedFourier(PVector[] input) {
     
     for (int k = 0; k < l; k++) {
       float angle = TWO_PI * k * n / l;
-      re += input[k].x * cos(angle) - input[k].y * sin(angle);
+      re += input[k].x * cos(angle) - input[k].i * sin(angle);
     }
     
     output[n] = re / l;
