@@ -25,3 +25,41 @@ float limit(float x, float max) {
 float cb(float x) {
   return x * x * x;
 }
+
+PVector[] fourier(float[] input) {
+  int l = input.length;
+  PVector[] output = new PVector[l];
+  
+  for (int k = 0; k < l; k++) {
+    float re = 0;
+    float im = 0;
+    
+    for (int n = 0; n < l; n++) {
+      float angle = TWO_PI * k * n / l;
+      re += input[n] * cos(angle);
+      im -= input[n] * sin(angle);
+    }
+    
+    output[k] = new PVector(re, im);
+  }
+  
+  return output;
+}
+
+float[] invertedFourier(PVector[] input) {
+  int l = input.length;
+  float[] output = new float[l];
+  
+  for (int n = 0; n < l; n++) {
+    float re = 0;
+    
+    for (int k = 0; k < l; k++) {
+      float angle = TWO_PI * k * n / l;
+      re += input[k].x * cos(angle) - input[k].y * sin(angle);
+    }
+    
+    output[n] = re / l;
+  }
+  
+  return output;
+}
