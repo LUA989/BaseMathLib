@@ -1,4 +1,4 @@
-// Mathematics Library v1.2 (Last upd. 5.14.24)
+// Mathematics Library v1.2 (Last upd. 6.17.24)
 // By LUA989
 
 // Demo

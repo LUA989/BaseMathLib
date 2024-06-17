@@ -1,4 +1,4 @@
-// Some Important Functions (Last upd. 5.14.24)
+// Some Important Functions (Last upd. 6.17.24)
 
 float sgn(float x) {
   float output = 0.0;
@@ -24,6 +24,19 @@ float limit(float x, float max) {
 
 float cb(float x) {
   return x * x * x;
+}
+
+float sinh(float x) {
+  return (exp(x) - exp(-x)) / 2;
+}
+
+float cosh(float x) {
+  return (exp(x) + exp(-x)) / 2;
+}
+
+float tanh(float x) {
+  float exp2x = exp(2.0 * x);
+  return (exp2x - 1) / (exp2x + 1);
 }
 
 Complex[] fourier(float[] input) {
