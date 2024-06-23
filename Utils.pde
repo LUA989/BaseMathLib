@@ -1,4 +1,4 @@
-// Some Important Functions (Last upd. 6.17.24)
+// Some Important Functions (Last upd. 6.23.24)
 
 float sgn(float x) {
   float output = 0.0;
@@ -27,11 +27,13 @@ float cb(float x) {
 }
 
 float sinh(float x) {
-  return (exp(x) - exp(-x)) / 2;
+  float exp = exp(x);
+  return (exp - 1.0 / exp) / 2;
 }
 
 float cosh(float x) {
-  return (exp(x) + exp(-x)) / 2;
+  float exp = exp(x);
+  return (exp + 1.0 / exp) / 2;
 }
 
 float tanh(float x) {
